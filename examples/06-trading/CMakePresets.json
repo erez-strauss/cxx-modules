@@ -1,0 +1,59 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "gcc-libstdcxx",
+      "displayName": "GCC with libstdc++",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/gcc-libstdcxx",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_CXX_EXTENSIONS": "OFF"
+      }
+    },
+    {
+      "name": "gcc-libstdcxx-shared",
+      "displayName": "GCC with libstdc++, shared libtrading",
+      "inherits": "gcc-libstdcxx",
+      "binaryDir": "${sourceDir}/build/gcc-libstdcxx-shared",
+      "cacheVariables": {
+        "TRADING_SHARED": "ON"
+      }
+    },
+    {
+      "name": "clang-libcxx",
+      "displayName": "Clang with libc++",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/clang-libcxx",
+      "toolchainFile": "${sourceDir}/cmake/clang-libcxx.cmake",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++",
+        "TARGET_STDLIB": "libc++",
+        "CMAKE_CXX_EXTENSIONS": "OFF"
+      }
+    },
+    {
+      "name": "clang-libstdcxx",
+      "displayName": "Clang with libstdc++",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/clang-libstdcxx",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++",
+        "TARGET_STDLIB": "libstdc++",
+        "CMAKE_CXX_EXTENSIONS": "OFF"
+      }
+    }
+  ],
+  "packagePresets": [
+    {
+      "name": "gcc-libstdcxx",
+      "configurePreset": "gcc-libstdcxx",
+      "generators": ["TGZ"]
+    },
+    {
+      "name": "gcc-libstdcxx-shared",
+      "configurePreset": "gcc-libstdcxx-shared",
+      "generators": ["TGZ"]
+    }
+  ]
+}

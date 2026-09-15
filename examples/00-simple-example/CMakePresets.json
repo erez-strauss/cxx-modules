@@ -1,0 +1,38 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "gcc-libstdcxx",
+      "displayName": "GCC with libstdc++",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/gcc-libstdcxx",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_CXX_EXTENSIONS": "OFF"
+      }
+    },
+    {
+      "name": "clang-libcxx",
+      "displayName": "Clang with libc++",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/clang-libcxx",
+      "toolchainFile": "${sourceDir}/cmake/clang-libcxx.cmake",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++",
+        "TARGET_STDLIB": "libc++",
+        "CMAKE_CXX_EXTENSIONS": "OFF"
+      }
+    },
+    {
+      "name": "clang-libstdcxx",
+      "displayName": "Clang with libstdc++",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/clang-libstdcxx",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++",
+        "TARGET_STDLIB": "libstdc++",
+        "CMAKE_CXX_EXTENSIONS": "OFF"
+      }
+    }
+  ]
+}
